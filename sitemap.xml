@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://sergio-ops10.github.io/2damasi/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
+<loc>https://sergio-ops10.github.io/2damasi/</loc>
+</url>
+<url>
+<loc>https://sergio-ops10.github.io/2damasi/champions.html</loc>
+<lastmod>2025-09-26T15:57:39+02:00</lastmod>
+<image:image>
+<image:loc>https://sergio-ops10.github.io/2damasi/media/posts/3/champions.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://sergio-ops10.github.io/2damasi/jugadores-importantes.html</loc>
+<lastmod>2025-09-26T16:10:14+02:00</lastmod>
+<image:image>
+<image:loc>https://sergio-ops10.github.io/2damasi/media/posts/4/images.jpeg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://sergio-ops10.github.io/2damasi/real-madrid-3.html</loc>
+<lastmod>2025-09-26T16:16:51+02:00</lastmod>
+</url>
+<url>
+<loc>https://sergio-ops10.github.io/2damasi/real-madrid-4.html</loc>
+<lastmod>2025-09-26T16:16:36+02:00</lastmod>
+<image:image>
+<image:loc>https://sergio-ops10.github.io/2damasi/media/posts/6/history.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://sergio-ops10.github.io/2damasi/real-madrid.html</loc>
+<lastmod>2025-09-26T15:45:20+02:00</lastmod>
+</url>
+</urlset>
