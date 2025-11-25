@@ -3,7 +3,7 @@
     <title>2damasi</title>
     <link href="https://sergio-ops10.github.io/2damasi/feed.xml" rel="self" />
     <link href="https://sergio-ops10.github.io/2damasi" />
-    <updated>2025-11-25T10:26:57+01:00</updated>
+    <updated>2025-11-25T10:35:26+01:00</updated>
     <author>
         <name>Sergio López</name>
     </author>
@@ -16,15 +16,18 @@
         </author>
         <link href="https://sergio-ops10.github.io/2damasi/configuracion-inicial-de-la-raspi-y-el-mac-mini.html"/>
         <id>https://sergio-ops10.github.io/2damasi/configuracion-inicial-de-la-raspi-y-el-mac-mini.html</id>
+        <media:content url="https://sergio-ops10.github.io/2damasi/media/posts/2/unnamed.jpg" medium="image" />
 
         <updated>2025-11-25T10:01:25+01:00</updated>
             <summary>
                 <![CDATA[
+                        <img src="https://sergio-ops10.github.io/2damasi/media/posts/2/unnamed.jpg" alt="" />
                      Documentación de Configuración Inicial Este documento detalla los pasos de configuración inicial para la Raspberry Pi y el Mac mini. Se muestra la pantalla de&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
+                    <p><img src="https://sergio-ops10.github.io/2damasi/media/posts/2/unnamed.jpg" class="type:primaryImage" alt="" /></p>
                 <h1> Documentación de Configuración Inicial</h1>
 <p>Este documento detalla los pasos de configuración inicial para la Raspberry Pi y el Mac mini.</p>
 <div class="section-container">
