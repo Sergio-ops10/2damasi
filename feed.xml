@@ -3,7 +3,7 @@
     <title>2damasi</title>
     <link href="https://sergio-ops10.github.io/2damasi/feed.xml" rel="self" />
     <link href="https://sergio-ops10.github.io/2damasi" />
-    <updated>2025-11-25T10:01:25+01:00</updated>
+    <updated>2025-11-25T10:26:57+01:00</updated>
     <author>
         <name>Sergio López</name>
     </author>
@@ -28,7 +28,7 @@
                 <h1> Documentación de Configuración Inicial</h1>
 <p>Este documento detalla los pasos de configuración inicial para la Raspberry Pi y el Mac mini.</p>
 <div class="section-container">
-<h2> Configuración Inicial de la Raspberry Pi (Sistema Operativo Raspberry Pi OS)</h2>
+<h2 class="align-center"> Configuración Inicial de la Raspberry Pi (Sistema Operativo Raspberry Pi OS)</h2>
 <div class="step">
 <h3>Paso 1: Bienvenida al Escritorio Pi</h3>
 <div class="step-content"><figure class="post__image"><img loading="lazy"  src="https://sergio-ops10.github.io/2damasi/media/posts/2/WhatsApp-Image-2025-11-20-at-19.42.30.jpeg" alt="" width="265" height="589" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://sergio-ops10.github.io/2damasi/media/posts/2/responsive/WhatsApp-Image-2025-11-20-at-19.42.30-xs.jpeg 300w ,https://sergio-ops10.github.io/2damasi/media/posts/2/responsive/WhatsApp-Image-2025-11-20-at-19.42.30-sm.jpeg 480w ,https://sergio-ops10.github.io/2damasi/media/posts/2/responsive/WhatsApp-Image-2025-11-20-at-19.42.30-md.jpeg 768w ,https://sergio-ops10.github.io/2damasi/media/posts/2/responsive/WhatsApp-Image-2025-11-20-at-19.42.30-lg.jpeg 1024w"></figure><br>
@@ -66,7 +66,7 @@
 </div>
 </div>
 <div class="section-container">
-<h2>🍏 Configuración Inicial del Mac Mini (macOS)</h2>
+<h2 class="align-center"> Configuración Inicial del Mac Mini (macOS)</h2>
 <div class="step">
 <h3>Paso 1: Creación de Cuenta de Usuario</h3>
 <div class="step-content"><figure class="post__image"><img loading="lazy"  src="https://sergio-ops10.github.io/2damasi/media/posts/2/WhatsApp-Image-2025-11-20-at-19.42.45-2.jpeg" alt="" width="461" height="335" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://sergio-ops10.github.io/2damasi/media/posts/2/responsive/WhatsApp-Image-2025-11-20-at-19.42.45-2-xs.jpeg 300w ,https://sergio-ops10.github.io/2damasi/media/posts/2/responsive/WhatsApp-Image-2025-11-20-at-19.42.45-2-sm.jpeg 480w ,https://sergio-ops10.github.io/2damasi/media/posts/2/responsive/WhatsApp-Image-2025-11-20-at-19.42.45-2-md.jpeg 768w ,https://sergio-ops10.github.io/2damasi/media/posts/2/responsive/WhatsApp-Image-2025-11-20-at-19.42.45-2-lg.jpeg 1024w"></figure><br>
