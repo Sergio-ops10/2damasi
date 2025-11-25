@@ -3,7 +3,7 @@
     <title>2damasi</title>
     <link href="https://sergio-ops10.github.io/2damasi/feed.xml" rel="self" />
     <link href="https://sergio-ops10.github.io/2damasi" />
-    <updated>2025-11-25T13:24:22+01:00</updated>
+    <updated>2025-11-25T13:27:23+01:00</updated>
     <author>
         <name>Sergio López</name>
     </author>
@@ -31,8 +31,6 @@
                 <div class="post__toc">
 <h3>Table of Contents</h3>
 <ul>
-<li><a href="#mcetoc_1jatffl6km"> Documentación de Configuración Inicial</a>
-<ul>
 <li><a href="#mcetoc_1jatffl6kn"> Configuración Inicial de la Raspberry Pi (Sistema Operativo Raspberry Pi OS)</a>
 <ul>
 <li><a href="#mcetoc_1jatffl6ko">Paso 1: Bienvenida al Escritorio Pi</a></li>
@@ -50,10 +48,8 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 </div>
-<h1 id="mcetoc_1jatffl6km"> Documentación de Configuración Inicial</h1>
+<p id="mcetoc_1jatffl6km"> Documentación de Configuración Inicial</p>
 <p>Este documento detalla los pasos de configuración inicial para la Raspberry Pi y el Mac mini.</p>
 <div class="section-container">
 <h2 id="mcetoc_1jatffl6kn" class="align-center"> Configuración Inicial de la Raspberry Pi (Sistema Operativo Raspberry Pi OS)</h2>
