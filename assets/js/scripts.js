@@ -1,3 +1,38 @@
+// Sticky menu
+let newScrollPosition = 0;
+let lastScrollPosition;
+const header = document.getElementById("js-header");
+const stickyMenu = document.getElementById("js-navbar-menu");
+
+window.addEventListener('scroll', () => {
+    lastScrollPosition = window.scrollY;
+
+    // Scrolling down
+    if (newScrollPosition < lastScrollPosition && lastScrollPosition > 90) {
+        header.classList.remove("is-visible");
+        header.classList.add("is-hidden");
+
+        // Scrolling up
+    } else if (newScrollPosition > lastScrollPosition && lastScrollPosition > 89) {
+        header.classList.remove("is-hidden");
+        header.classList.add("is-visible");
+        if (stickyMenu) {
+            stickyMenu.classList.add("is-sticky");
+        }
+    }
+
+    if (lastScrollPosition < 1) {
+        header.classList.remove("is-visible");
+
+        if (stickyMenu) {
+            stickyMenu.classList.remove("is-sticky");
+        }
+    }
+
+    newScrollPosition = lastScrollPosition;
+});
+
+
 // Dropdown menu
 (function (menuConfig) {
     /**
@@ -427,7 +462,6 @@
     init();
 })(window.publiiThemeMenuConfig);
 
-
 // Share buttons pop-up
 (function () {
     // share popup
@@ -499,6 +533,35 @@
         }
     }
 })();
+
+// Load search input area
+const searchButton = document.querySelector('.js-search-btn');
+const searchOverlay = document.querySelector('.js-search-overlay');
+const searchInput = document.querySelector('[type="search"]');
+
+if (searchButton) {
+    searchButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        searchOverlay.classList.toggle('expanded');
+
+        if (searchInput) {
+            setTimeout(() => {
+                if (searchOverlay.classList.contains('expanded')) {
+                    searchInput.focus();
+                }
+            }, 60);
+        }
+    });
+
+    searchOverlay.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    document.body.addEventListener('click', () => {
+        searchOverlay.classList.remove('expanded');
+    });
+}
+
 
 // Responsive embeds script
 (function () {
