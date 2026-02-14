@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación: Workflow de Pre-Entrenamiento IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Documentación</h1>
+            <p class="subtitle">Análisis del Workflow de Entrenamiento de Modelo GPT-2 (Quijote)</p>
+        </header>
+
+        <div class="timeline">
+            <!-- Step 1 -->
+            <div class="step-card visible">
+                <div class="image-wrapper" onclick="openLightbox('c4d13254-4a98-48d6-a126-23234f3412a4.jpg')">
+                    <img src="c4d13254-4a98-48d6-a126-23234f3412a4.jpg" alt="Paso 1" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 01</span>
+                    <h3 class="step-title">Obtención de Datos</h3>
+                    <p class="step-description">Descarga de los archivos necesarios para el entrenamiento, incluyendo el
+                        dataset de texto (`pg2000.txt`, presumiblemente Don Quijote) y la guía del curso (`Curso IA.
+                        Pre-Entrenamiento.pdf`).</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('6d32e06b-b655-4ae4-b088-0e29403cfd2e.jpg')">
+                    <img src="6d32e06b-b655-4ae4-b088-0e29403cfd2e.jpg" alt="Paso 2" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 02</span>
+                    <h3 class="step-title">Configuración Inicial del Script</h3>
+                    <p class="step-description">Edición del script `entrenar.py` en el editor Nano. Se definen los
+                        hiperparámetros (batch_size, learning_rate) y se importan las librerías base de PyTorch
+                        (`torch.nn`).</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('7dd06087-2dd8-4f09-8aa6-fbfd7cd352a7.jpg')">
+                    <img src="7dd06087-2dd8-4f09-8aa6-fbfd7cd352a7.jpg" alt="Paso 3" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 03</span>
+                    <h3 class="step-title">Creación de Entorno Virtual</h3>
+                    <p class="step-description">Creación y activación de un entorno virtual de Python (`entorno_ia`)
+                        para aislar las dependencias del proyecto y evitar conflictos con el sistema base.</p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('86ae9d36-d807-41b6-b382-5df67fbb2720.jpg')">
+                    <img src="86ae9d36-d807-41b6-b382-5df67fbb2720.jpg" alt="Paso 4" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 04</span>
+                    <h3 class="step-title">Instalación de PyTorch</h3>
+                    <p class="step-description">Descarga e instalación de las librerías `torch` esenciales mediante
+                        `pip` dentro del entorno virtual, preparando el sistema para cálculos tensoriales.</p>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('2cab4d7e-796e-423d-bdb2-45b4d8467534.jpg')">
+                    <img src="2cab4d7e-796e-423d-bdb2-45b4d8467534.jpg" alt="Paso 5" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 05</span>
+                    <h3 class="step-title">Primer Intento de Ejecución</h3>
+                    <p class="step-description">Ejecución inicial del script `entrenar.py`. Tras corregir un error de
+                        dependencia faltante (`numpy`), se logra iniciar el entrenamiento en modo CPU con un modelo de
+                        3.2M de parámetros.</p>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('1f413bae-d901-421b-a3e0-3ec1552c32cb.jpg')">
+                    <img src="1f413bae-d901-421b-a3e0-3ec1552c32cb.jpg" alt="Paso 6" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 06</span>
+                    <h3 class="step-title">Progreso del Entrenamiento (CPU)</h3>
+                    <p class="step-description">Visualización de la pérdida (loss) disminuyendo desde 4.92 a 2.16 tras
+                        500 iteraciones, confirmando que el modelo está aprendiendo correctamente, aunque lentamente en
+                        CPU.</p>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('6fc7aefa-3c78-4b30-9844-e177f8e34fde.jpg')">
+                    <img src="6fc7aefa-3c78-4b30-9844-e177f8e34fde.jpg" alt="Paso 7" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 07</span>
+                    <h3 class="step-title">Conflicto de Entornos (PEP 668)</h3>
+                    <p class="step-description">Intento de instalar librerías adicionales globalmente que resulta en un
+                        error de "externally-managed-environment", una medida de seguridad de Python en sistemas
+                        modernos.</p>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('2f51afd2-9f63-4de0-9b4f-c9b4beaf51dc.jpg')">
+                    <img src="2f51afd2-9f63-4de0-9b4f-c9b4beaf51dc.jpg" alt="Paso 8" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 08</span>
+                    <h3 class="step-title">Solución de Dependencias</h3>
+                    <p class="step-description">Se opta por forzar la instalación de los paquetes necesarios (`torch`,
+                        `torchvision`) utilizando la flag `--break-system-packages` para continuar con el experimento
+                        rápidamente.</p>
+                </div>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('11bf7414-8d63-4891-9ae4-a3bd5ba9e881.jpg')">
+                    <img src="11bf7414-8d63-4891-9ae4-a3bd5ba9e881.jpg" alt="Paso 9" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 09</span>
+                    <h3 class="step-title">Instalación Masiva de Paquetes</h3>
+                    <p class="step-description">Consola mostrando la descarga e instalación exitosa de múltiples
+                        dependencias (Jinja2, SymPy, NetworkX) necesarias para el funcionamiento completo de PyTorch.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 10 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('2cff010f-39d3-4c91-93a6-5b3f6c6dbdc0.jpg')">
+                    <img src="2cff010f-39d3-4c91-93a6-5b3f6c6dbdc0.jpg" alt="Paso 10" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 10</span>
+                    <h3 class="step-title">Refinamiento del Código</h3>
+                    <p class="step-description">Edición del código para implementar la función de generación de texto.
+                        Se observa el mensaje "Generando texto al estilo Cervantes", preparando el modelo para
+                        inferencia.</p>
+                </div>
+            </div>
+
+            <!-- Step 11 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('ce831558-652c-40bf-98af-c83144b7cf47.jpg')">
+                    <img src="ce831558-652c-40bf-98af-c83144b7cf47.jpg" alt="Paso 11" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 11</span>
+                    <h3 class="step-title">Aceleración por Hardware (MPS)</h3>
+                    <p class="step-description">Reinicio del script detectando la aceleración MPS (Metal Performance
+                        Shaders). El sistema confirma: "¡Tu Mac está acelerando esto!", optimizando el rendimiento en
+                        hardware Apple Silicon.</p>
+                </div>
+            </div>
+
+            <!-- Step 12 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('6fc2d94d-f05c-4e51-9f76-39c4a3630bc5.jpg')">
+                    <img src="6fc2d94d-f05c-4e51-9f76-39c4a3630bc5.jpg" alt="Paso 12" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 12</span>
+                    <h3 class="step-title">Integración de Hugging Face</h3>
+                    <p class="step-description">Modificación del script para importar `GPT2Config` y `GPT2LMHeadModel`
+                        desde la librería `transformers`, adoptando una arquitectura estándar de la industria.</p>
+                </div>
+            </div>
+
+            <!-- Step 13 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('3609c878-4192-4dad-8478-bbfcf61decad.jpg')">
+                    <img src="3609c878-4192-4dad-8478-bbfcf61decad.jpg" alt="Paso 13" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 13</span>
+                    <h3 class="step-title">Instalación de Transformers</h3>
+                    <p class="step-description">Corrección del error "No module named 'transformers'" mediante la
+                        instalación del paquete `transformers`, esencial para utilizar los modelos pre-entrenados de
+                        Hugging Face.</p>
+                </div>
+            </div>
+
+            <!-- Step 14 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('e4392535-87bd-436f-8b5f-01c2a43e17ac.jpg')">
+                    <img src="e4392535-87bd-436f-8b5f-01c2a43e17ac.jpg" alt="Paso 14" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 14</span>
+                    <h3 class="step-title">Depuración y Tokenización</h3>
+                    <p class="step-description">Tras corregir un error de sintaxis en el código, el proceso de
+                        tokenización del texto del Quijote comienza exitosamente, preparando los datos para el
+                        entrenamiento.</p>
+                </div>
+            </div>
+
+            <!-- Step 15 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('7de67b7d-b1d6-4b63-a5ee-8f762c0e8d5b.jpg')">
+                    <img src="7de67b7d-b1d6-4b63-a5ee-8f762c0e8d5b.jpg" alt="Paso 15" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 15</span>
+                    <h3 class="step-title">Entrenamiento y Persistencia</h3>
+                    <p class="step-description">El entrenamiento progresa a la Época 1 de 3. Se observa una caída
+                        significativa en el error (loss) inicial y una advertencia sobre un parámetro de configuración
+                        no reconocido.</p>
+                </div>
+            </div>
+
+            <!-- Step 16 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('36cbce02-fc1e-44af-82b8-eebdf7b750bf.jpg')">
+                    <img src="36cbce02-fc1e-44af-82b8-eebdf7b750bf.jpg" alt="Paso 16" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 16</span>
+                    <h3 class="step-title">Finalización y Preparación GGUF</h3>
+                    <p class="step-description">Entrenamiento completado en la Época 3. El modelo se guarda y se procede
+                        a clonar el repositorio de `llama.cpp` para iniciar el proceso de cuantización y conversión.</p>
+                </div>
+            </div>
+
+            <!-- Step 17 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('d9e0cd00-d394-45fc-908f-52ace182aea4.jpg')">
+                    <img src="d9e0cd00-d394-45fc-908f-52ace182aea4.jpg" alt="Paso 17" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 17</span>
+                    <h3 class="step-title">Instalación Dependencias Llama.cpp</h3>
+                    <p class="step-description">Instalación de las dependencias específicas requeridas por `llama.cpp`
+                        para ejecutar el script de conversión de formatos.</p>
+                </div>
+            </div>
+
+            <!-- Step 18 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('01c763f6-3d90-4f40-8648-5b3301ead693.jpg')">
+                    <img src="01c763f6-3d90-4f40-8648-5b3301ead693.jpg" alt="Paso 18" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 18</span>
+                    <h3 class="step-title">Conversión a GGUF</h3>
+                    <p class="step-description">Ejecución del script `convert_hf_to_gguf.py` para transformar el modelo
+                        entrenado en PyTorch (`quijote_gpt2_model`) al formato optimizado GGUF (`quijote.gguf`).</p>
+                </div>
+            </div>
+
+            <!-- Step 19 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('0366eb22-0c3f-4ba3-9896-2939f315da98.jpg')">
+                    <img src="0366eb22-0c3f-4ba3-9896-2939f315da98.jpg" alt="Paso 19" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 19</span>
+                    <h3 class="step-title">Verificación de Archivos</h3>
+                    <p class="step-description">Visualización en el Finder de los artefactos generados: la carpeta del
+                        modelo original, el repositorio `llama.cpp` y el archivo final `quijote.gguf` listo para uso.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 20 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('75018d1c-4ec9-4020-891a-f19ea9c513ae.jpg')">
+                    <img src="75018d1c-4ec9-4020-891a-f19ea9c513ae.jpg" alt="Paso 20" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 20</span>
+                    <h3 class="step-title">Interfaz LM Studio</h3>
+                    <p class="step-description">Preparación para importar el modelo en LM Studio, una herramienta para
+                        ejecutar LLMs locales con interfaz gráfica.</p>
+                </div>
+            </div>
+
+            <!-- Step 21 -->
+            <div class="step-card">
+                <div class="image-wrapper" onclick="openLightbox('319023af-0920-4b14-b4b8-f8ced948da32.jpg')">
+                    <img src="319023af-0920-4b14-b4b8-f8ced948da32.jpg" alt="Paso 21" class="img-preview">
+                </div>
+                <div class="dot"></div>
+                <div class="card-content">
+                    <span class="step-number">Paso 21</span>
+                    <h3 class="step-title">Modelo Importado</h3>
+                    <p class="step-description">Confirmación final: El modelo `quijote` (GPT-2, 16M parámetros) aparece
+                        listado correctamente en la biblioteca de modelos de LM Studio, listo para chatear.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <span class="close-lightbox" onclick="closeLightbox(event)">&times;</span>
+        <img id="lightbox-img" class="lightbox-img" src="" alt="">
+    </div>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.step-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Lightbox functions
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target !== document.getElementById('lightbox-img')) {
+                const lightbox = document.getElementById('lightbox');
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+
+</html>
