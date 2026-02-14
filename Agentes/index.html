@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación de Agentes de IA Locales | Guía Definitiva</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    
+    <header class="hero">
+        <div class="container">
+            <span class="badge">Guía Maestra 2026</span>
+            <h1>Construye tu propio<br><span class="gradient-text">Agente de IA Local</span></h1>
+            <p class="subtitle">Descubre cómo integrar MCP, LM Studio y VS Code para crear herramientas inteligentes sin depender de la nube.</p>
+            <div class="os-warning">
+                ⚠️ <strong>Nota para usuarios de Windows:</strong> Las capturas muestran macOS, pero esta guía incluye los comandos adaptados para tu sistema.
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Fase 1 -->
+        <section id="fase1" class="phase">
+            <div class="phase-header">
+                <h2><span class="phase-number">01</span> Configuración Inicial y Primer Servidor</h2>
+            </div>
+            
+            <article class="step-card">
+                <div class="step-content">
+                    <h3>Paso 1: Tu Base de Operaciones</h3>
+                    <p>Comenzamos creando la estructura del proyecto y un entorno virtual aislado. Esto es vital para no conflictos de librerías.</p>
+                    <div class="code-block-wrapper">
+                        <div class="code-header">Powershell (Windows)</div>
+                        <pre><code>mkdir mi-agente-hora
+cd mi-agente-hora
+python -m venv venv
+.\venv\Scripts\activate
+pip install fastapi[all] uvicorn</code></pre>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="images/aecc34d7-1a65-42ac-8587-718f5e5204d1.jpg" alt="Setup del entorno" loading="lazy">
+                </div>
+            </article>
+
+            <article class="step-card reverse">
+                <div class="step-content">
+                    <h3>Paso 2: El Primer Código (FastAPI)</h3>
+                    <p>Creamos <code>servidor_hora.py</code>. En esta primera versión usamos FastAPI puro para entender las bases. Definimos una ruta que devuelve la hora JSON.</p>
+                </div>
+                <div class="step-image">
+                    <img src="images/6399cef9-c8c6-4ad3-b2e4-043c36284b6f.jpg" alt="Código FastAPI" loading="lazy">
+                </div>
+            </article>
+
+            <article class="step-card">
+                <div class="step-content">
+                    <h3>Paso 3: Despegue Inicial</h3>
+                    <p>Ejecutamos el servidor. Si todo va bien, verás que Uvicorn inicia en el puerto 1235.</p>
+                    <div class="code-block-wrapper">
+                        <div class="code-header">Terminal</div>
+                        <pre><code>python servidor_hora.py</code></pre>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="images/9a026c60-2707-407c-b4fb-d92447ff4600.jpg" alt="Ejecución servidor" loading="lazy">
+                </div>
+            </article>
+        </section>
+
+        <!-- Fase 2 -->
+        <section id="fase2" class="phase">
+            <div class="phase-header">
+                <h2><span class="phase-number">02</span> Conexión con LM Studio</h2>
+            </div>
+
+            <article class="step-card reverse">
+                <div class="step-content">
+                    <h3>Paso 4: Instruyendo al Modelo</h3>
+                    <p>En LM Studio, configuramos el <em>System Prompt</em>. Le decimos al modelo que no invente la hora, sino que use la herramienta que le vamos a dar.</p>
+                </div>
+                <div class="step-image">
+                    <img src="images/75109284-4a7c-4c3c-9af1-8a9c98a82ace.jpg" alt="System Prompt" loading="lazy">
+                </div>
+            </article>
+
+            <article class="step-card">
+                <div class="step-content">
+                    <h3>Paso 5: El Puente (mcp.json)</h3>
+                    <p>Creamos el archivo <code>mcp.json</code> en la carpeta de configuración de LM Studio para que sepa dónde encontrar nuestro servidor.</p>
+                    <div class="code-block-wrapper">
+                        <pre><code>{
+  "mcpServers": {
+    "servidor-hora": {
+      "url": "http://127.0.0.1:1235"
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="images/49eb3874-49ff-4a9a-8658-60cc70359abc.jpg" alt="Configuración JSON" loading="lazy">
+                </div>
+            </article>
+
+            <article class="step-card reverse">
+                <div class="step-content">
+                    <h3>Paso 6: El Momento de la Verdad (y del Cambio)</h3>
+                    <p>Al intentar conectar, es probable que necesitemos un protocolo más robusto. Aquí decidimos pasar a <strong>FastMCP</strong> para hacerlo profesional.</p>
+                    <div class="code-block-wrapper">
+                        <div class="code-header">Terminal</div>
+                        <pre><code>pip install fastmcp</code></pre>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="images/9459d1a0-51aa-4d70-a500-3d8f848c685c.jpg" alt="Instalación FastMCP" loading="lazy">
+                </div>
+            </article>
+        </section>
+
+        <!-- Fase 3 -->
+        <section id="fase3" class="phase">
+            <div class="phase-header">
+                <h2><span class="phase-number">03</span> Actualización a FastMCP</h2>
+            </div>
+
+            <article class="step-card">
+                <div class="step-content">
+                    <h3>Paso 7: Código Evolucionado</h3>
+                    <p>Reescribimos <code>servidor_hora.py</code> usando <code>FastMCP</code>. Mucho más limpio y potente.</p>
+                </div>
+                <div class="step-image">
+                    <img src="images/1af2f237-ec66-4c05-b7c3-15c82c7f0020.jpg" alt="Código FastMCP" loading="lazy">
+                </div>
+            </article>
+
+            <article class="step-card reverse">
+                <div class="step-content">
+                    <h3>Paso 8: Servidor 2.0</h3>
+                    <p>Al ejecutar el nuevo código, aparece el logo de FastMCP. ¡Estamos listos para SSE (Server-Sent Events)!</p>
+                </div>
+                <div class="step-image">
+                    <img src="images/6c9bb6e3-d1da-4f9c-b6fe-4be578068f2c.jpg" alt="Logo FastMCP" loading="lazy">
+                </div>
+            </article>
+
+            <article class="step-card">
+                <div class="step-content">
+                    <h3>Paso 9: Ajuste Fino en JSON</h3>
+                    <p>Actualizamos <code>mcp.json</code> para soportar SSE, añadiendo <code>/sse</code> al final de la URL.</p>
+                    <div class="code-block-wrapper">
+                        <pre><code>"url": "http://127.0.0.1:1235/sse"</code></pre>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="images/7752e912-782a-4008-bca0-bff06cffd90b.jpg" alt="Configuración SSE" loading="lazy">
+                </div>
+            </article>
+
+            <article class="step-card reverse">
+                <div class="step-content">
+                    <h3>Paso 10: Luz Verde</h3>
+                    <p>En LM Studio, verificamos que el indicador de conexión esté en verde. ¡Conexión establecida!</p>
+                </div>
+                <div class="step-image">
+                    <img src="images/2608db9f-9437-4e81-a73f-108b6b151442.jpg" alt="LM Studio Integrations" loading="lazy">
+                </div>
+            </article>
+        </section>
+
+        <!-- Fase 4 -->
+        <section id="fase4" class="phase">
+            <div class="phase-header">
+                <h2><span class="phase-number">04</span> Pruebas en Vivo</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/2bc17405-907f-4702-b71a-91605828cd40.jpg" alt="Prueba Chat" loading="lazy">
+                    <p>Preguntamos la hora</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/f47d0118-d19d-4eda-bbb4-79021de97e52.jpg" alt="Respuesta Tool" loading="lazy">
+                    <p>El modelo decide usar la herramienta</p>
+                </div>
+            </div>
+
+            <article class="step-card">
+                <div class="step-content">
+                    <h3>Paso 13 & 14: Ejecución y Permisos</h3>
+                    <p>La terminal muestra éxito (código 200). LM Studio puede pedirte permiso para ejecutar la acción.</p>
+                </div>
+                <div class="step-image">
+                    <img src="images/5c258c68-a15d-4791-9035-42ede4fd83ac.jpg" alt="Logs Éxito" loading="lazy">
+                </div>
+            </article>
+            
+             <article class="step-card reverse">
+                <div class="step-content">
+                    <h3>Paso 15: Personalización Total</h3>
+                    <p>Añadimos <code>print()</code> en el código para ver en tiempo real qué está pasando en nuestra terminal "hacker".</p>
+                </div>
+                <div class="step-image">
+                    <img src="images/4ecddc0b-8bbf-4c31-a114-47679de534f3.jpg" alt="Código con Prints" loading="lazy">
+                </div>
+            </article>
+             <article class="step-card">
+                <div class="step-content">
+                    <h3>Paso 16: El Resultado Final</h3>
+                    <p>Ahora vemos exactamente cuándo el modelo nos llama y qué le respondemos.</p>
+                </div>
+                <div class="step-image">
+                    <img src="images/00a4568b-dd1f-4a72-8c54-a6a160817462.jpg" alt="Terminal Final" loading="lazy">
+                </div>
+            </article>
+        </section>
+
+        <!-- Fase 5 -->
+        <section id="fase5" class="phase">
+            <div class="phase-header">
+                <h2><span class="phase-number">05</span> Integración en VS Code</h2>
+            </div>
+
+            <div class="steps-grid">
+                <div class="grid-card">
+                    <img src="images/0c3b1974-d941-42fc-8d20-6f67e141ee7d.jpg" loading="lazy">
+                    <h4>Paso 17: Ollama Check</h4>
+                    <p>Verificamos que Ollama esté corriendo.</p>
+                </div>
+                <div class="grid-card">
+                    <img src="images/ac4b8e72-1db9-4001-8942-760b84c479ed.jpg" loading="lazy">
+                    <h4>Paso 18: Download Model</h4>
+                    <p>Descargamos <code>qwen2.5-coder:3b</code>.</p>
+                </div>
+                <div class="grid-card">
+                    <img src="images/206fe8ca-29af-4bbe-876c-f9ed87b7c4ba.jpg" loading="lazy">
+                    <h4>Paso 19: VS Code Extension</h4>
+                    <p>Instalamos Kilo Code o Continue.</p>
+                </div>
+                <div class="grid-card">
+                    <img src="images/353e8250-4c8f-44be-9f70-d00768e72d94.jpg" loading="lazy">
+                    <h4>Paso 20: Configurar Ollama</h4>
+                    <p>Conectamos la extensión al puerto 11434.</p>
+                </div>
+                <div class="grid-card">
+                    <img src="images/46eb844f-1441-44c9-9c7d-c52c54c332f8.jpg" loading="lazy">
+                    <h4>Paso 21: LM Studio DL</h4>
+                    <p>O descargamos el modelo en LM Studio.</p>
+                </div>
+                <div class="grid-card">
+                    <img src="images/164a642c-ac21-44df-a6bd-c671bda6bb32.jpg" loading="lazy">
+                    <h4>Paso 22: Servidor Local</h4>
+                    <p>Iniciamos el servidor en puerto 1234.</p>
+                </div>
+            </div>
+
+            <article class="step-card highlight-card">
+                <div class="step-content">
+                    <h3>Paso 23: Configuración Final (Continue)</h3>
+                    <p>Configuramos <code>config.yaml</code> en VS Code para usar LM Studio como backend de nuestro copiloto de programación.</p>
+                    <div class="code-block-wrapper">
+                        <pre><code>provider: lmstudio
+model: qwen2.5-coder-3b-instruct
+apiBase: "http://localhost:1234/v1"</code></pre>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="images/613c91d3-0a7a-45f5-8736-e4caac3e6df5.jpg" alt="Config Final" loading="lazy">
+                </div>
+            </article>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Generado por tu Asistente de IA | 2026</p>
+    </footer>
+
+    <script>
+        // Simple reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.step-card, .grid-card').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
