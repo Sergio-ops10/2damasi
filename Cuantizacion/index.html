@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diario de Cuantización: De HF a GGUF</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>El Viaje del Modelo</h1>
+            <p style="font-size: 1.2rem; color: var(--text-secondary);">Cómo domar una IA gigante y meterla en mi Mac (Guía definitiva)</p>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Step 1: Cloning -->
+            <div class="step-card">
+                <span class="badge badge-info">Paso 1: El Inicio</span>
+                <h2>Conseguir el Código Fuente</h2>
+                <div class="step-image-container">
+                    <img src="6761b4a0-eba7-4bcf-af0d-eac2bdf610f5.jpg" alt="Git Clone Llama.cpp">
+                </div>
+                <p>
+                    Lo primero es lo básico. Para poder trastear con modelos de lenguaje en local, 
+                    <span class="highlight">llama.cpp</span> es la herramienta clave. Aquí me ves clonando el repositorio oficial.
+                    Es el cimiento de todo; sin esto, no somos nada. Estoy trayendo toda la magia de Gerganov a mi máquina con un simple <code>git clone</code>.
+                </p>
+            </div>
+
+            <!-- Step 2: Dependencies -->
+            <div class="step-card">
+                <span class="badge badge-info">Paso 2: Entorno</span>
+                <h2>Preparando el Terreno</h2>
+                <div class="step-image-container">
+                    <img src="9ed42687-2c70-4c08-81fb-463f08d90f07.jpg" alt="Pip Install Requirements">
+                </div>
+                <p>
+                    Antes de compilar nada, Python necesita sus vitaminas. Aquí estoy instalando las dependencias necesarias.
+                    Fíjate que uso un entorno virtual (venv), porque soy ordenado y no quiero romper mi sistema base.
+                    <code>pip install -r requirements.txt</code> y a correr. Todo listo para la acción.
+                </p>
+            </div>
+
+            <!-- Step 3: Build Fail -->
+            <div class="step-card">
+                <span class="badge badge-error">Obstáculo</span>
+                <h2>El "Make" ya no es lo que era</h2>
+                <div class="step-image-container">
+                    <img src="ff1d5cf9-d51d-49dd-a66b-027f89a4df80.jpg" alt="Make Error">
+                </div>
+                <p>
+                    Aquí me confié. Intenté tirar un <code>make</code> directo como se hacía antes, pero el sistema me paró los pies.
+                    <span class="highlight">"Build system changed"</span>. Clarísimo. Ahora se usa CMake.
+                    Es importante leer los errores, ahí es donde uno aprende de verdad. Nada de pánico, solo cambio de estrategia.
+                </p>
+            </div>
+
+            <!-- Step 4: CMake Config -->
+            <div class="step-card">
+                <span class="badge badge-success">Solución</span>
+                <h2>Configurando con CMake</h2>
+                <div class="step-image-container">
+                    <img src="78aac6b9-816d-4e5c-8b05-6a090fea54be.jpg" alt="CMake Configuration">
+                </div>
+                <p>
+                    Obedeciendo al error anterior, aquí estoy configurando la compilación con <code>cmake -B build</code>.
+                    Detectó mi compilador AppleClang y preparó todo para la arquitectura ARM64 de mi Mac.
+                    Se siente el poder cuando ves esas líneas de "Found Threads: TRUE" y "Accelerate framework found". 
+                    Vamos por el buen camino.
+                </p>
+            </div>
+
+             <!-- Step 5: Conversion Fail -->
+             <div class="step-card">
+                <span class="badge badge-error">Error Conceptual</span>
+                <h2>La Ambición me pudo</h2>
+                <div class="step-image-container">
+                    <img src="74261cf9-95dc-4aef-b951-30d2d4d0c411.jpg" alt="Conversion Error q4_k_m">
+                </div>
+                <p>
+                    Aquí quise correr demasiado. Intenté convertir el modelo de HuggingFace DIRECTAMENTE a <code>q4_k_m</code> (cuantizado a 4 bits) usando el script de conversión.
+                    <span class="highlight">¡Error!</span> El script me dijo "argument --outtype: invalid choice".
+                    Claro, primero hay que pasarlo a un formato "limpio" (F16 o F32) antes de comprimirlo. Lección aprendida: no te saltes pasos.
+                </p>
+            </div>
+
+            <!-- Step 6: Conversion Success -->
+            <div class="step-card">
+                <span class="badge badge-success">Paso Correcto</span>
+                <h2>Conversión a F16 (El Puente)</h2>
+                <div class="step-image-container">
+                    <img src="b2d2bdef-682d-4e26-901e-e64d567bfc32.jpg" alt="Conversion F16 Success">
+                </div>
+                <p>
+                    Corregido el tiro. Aquí ejecuto <code>convert_hf_to_gguf.py</code> pero con <code>--outtype f16</code>.
+                    Esto toma los tensores originales y los deja en un formato GGUF de alta precisión.
+                    Es el paso intermedio necesario. Ahora sí, el script está trabajando felizmente generando <code>phi-3-mini-f16.gguf</code>.
+                </p>
+            </div>
+
+            <!-- Step 7: Quantization -->
+            <div class="step-card">
+                <span class="badge badge-info">El Gran Momento</span>
+                <h2>Cuantizando a 4 Bits</h2>
+                <div class="step-image-container">
+                    <img src="0f31682e-3fe6-44c4-8110-caeb852d2e13.jpg" alt="Quantization Process">
+                </div>
+                <p>
+                    ¡Esta es la verdadera magia! Uso la herramienta <code>llama-quantize</code> (que compilamos antes con CMake) para tomar ese modelo F16 gigante y comprimirlo a <code>q4_k_m</code>.
+                    Fíjate en la barra de progreso. Estamos reduciendo drásticamente el tamaño del modelo sin perder mucha inteligencia.
+                    De gigas a algo mucho más manejable. Eficiencia pura.
+                </p>
+            </div>
+
+            <!-- Step 8: Inference -->
+            <div class="step-card">
+                <span class="badge badge-success">¡Éxito!</span>
+                <h2>Vivo y Respondiendo</h2>
+                <div class="step-image-container">
+                    <img src="4b13b634-4bf0-464b-bbb7-fa7ed6d64dd3.jpg" alt="Inference Result">
+                </div>
+                <p>
+                    Y aquí el resultado final. Ejecutando el modelo cuantizado.
+                    Le pedí una historia y mira cómo escribe: "Diego en el guardián del amor eterno en Córdoba...".
+                    <span class="highlight">308 tokens generados a casi 14 tokens por segundo</span> en local.
+                    Es increíble. Tenemos una IA funcional corriendo en nuestra propia máquina gracias a seguir el proceso correcto. Misión cumplida.
+                </p>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>Documentación generada con pasión por el aprendizaje. © 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple reveal animation on scroll
+        const cards = document.querySelectorAll('.step-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

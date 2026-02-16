@@ -1,0 +1,208 @@
+:root {
+    --bg-color: #0d1117;
+    --card-bg: rgba(22, 27, 34, 0.8);
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --accent-color: #58a6ff;
+    --accent-glow: rgba(88, 166, 255, 0.4);
+    --error-color: #ff7b72;
+    --success-color: #3fb950;
+    --code-bg: #000000;
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    background: linear-gradient(120deg, var(--accent-color), #bc8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* Layout */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    animation: fadeIn Down 1s ease-out;
+}
+
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--accent-color), #bc8cff);
+    border-radius: 2px;
+}
+
+.step-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    margin-left: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.step-card::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-color);
+    z-index: 10;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(88, 166, 255, 0.2);
+    border-color: var(--accent-color);
+}
+
+/* Images */
+.step-image-container {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #30363d;
+    position: relative;
+}
+
+.step-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.step-image-container:hover img {
+    transform: scale(1.02);
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.badge-success {
+    background: rgba(63, 185, 80, 0.2);
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.badge-error {
+    background: rgba(255, 123, 114, 0.2);
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+.badge-info {
+    background: rgba(88, 166, 255, 0.2);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+/* Text Content */
+p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.highlight {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+code {
+    background-color: rgba(110, 118, 129, 0.2);
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #ff7b72;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    border-top: 1px solid #30363d;
+    margin-top: 3rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 10px;
+    }
+    .step-card {
+        margin-left: 30px;
+    }
+    .step-card::before {
+        left: -28px;
+    }
+}
