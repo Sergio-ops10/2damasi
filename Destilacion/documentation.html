@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destilación de Conocimiento: De la Incompetencia a la Maestría</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050a14;
+            --card-bg: rgba(16, 24, 40, 0.7);
+            --text-primary: #e0e6ed;
+            --text-secondary: #94a3b8;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Background */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-bottom: 3rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 8rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .headline {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 4rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .image-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.02);
+        }
+
+        .card-content {
+            padding: 0 1rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .card-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-snippet {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: var(--accent-blue);
+            font-size: 0.9em;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .status-success { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
+        .status-error { background: rgba(239, 68, 68, 0.2); color: var(--accent-red); }
+        .status-info { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
+
+        /* Timeline Connector */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--glass-border);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -2.6rem;
+            top: 2rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            background: var(--bg-color);
+            border: 2px solid var(--accent-blue);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <header>
+        <div class="status-badge status-info">Laboratorio de IA</div>
+        <h1>Proyecto Qwen:<br>La Destilación</h1>
+        <p class="subtitle">
+            Un análisis riguroso sobre la transferencia de inteligencia de un modelo masivo a una arquitectura compacta. 
+            Documentación técnica de los experimentos realizados con Qwen 1.5B (Maestro) y Qwen 0.5B (Estudiante).
+        </p>
+    </header>
+
+    <div class="container timeline">
+
+        <!-- FASE 1: INFRAESTRUCTURA -->
+        <section class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="section-title">Fase 1: Infraestructura</div>
+            <h2 class="headline">El Génesis del Entorno</h2>
+            
+            <div class="card">
+                <div class="image-container">
+                    <img src="067e77d4-d863-4094-9804-e4eb7d67f412.jpg" alt="Setup inicial">
+                </div>
+                <div class="card-content">
+                    <h3>01. La Fundación</h3>
+                    <p>
+                        Todo gran experimento comienza con un entorno limpio. Aquí observamos la creación del directorio de trabajo <span class="code-snippet">destilacion</span> y la preparación del entorno virtual. La instalación de bibliotecas fundamentales como <span class="code-snippet">torch</span>, <span class="code-snippet">transformers</span> y <span class="code-snippet">accelerate</span> establece la base física sobre la cual operará nuestra inteligencia artificial. Sin estos cimientos, ninguna inferencia es posible.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="fbc2121e-dadc-4b4f-a829-1c438b46e7a5.jpg" alt="Error de dependencias">
+                </div>
+                <div class="card-content">
+                    <span class="status-badge status-error">Obstáculo Detectado</span>
+                    <h3>02. El Caos de las Dependencias</h3>
+                    <p>
+                        La fricción es inevitable. Al intentar ejecutar el primer script de entrenamiento, nos encontramos con un <span class="code-snippet">ModuleNotFoundError</span>. La biblioteca <span class="code-snippet">datasets</span>, crucial para el manejo de datos de Hugging Face, estaba ausente. Este momento captura la realidad del desarrollo: la lucha constante contra la configuración del entorno.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="247390fb-2184-4ef9-ac42-336a4fdffa99.jpg" alt="Solución de dependencias">
+                </div>
+                <div class="card-content">
+                    <span class="status-badge status-success">Resolución</span>
+                    <h3>03. La Corrección</h3>
+                    <p>
+                        Respuesta inmediata y precisa. Instalación de <span class="code-snippet">datasets</span>, <span class="code-snippet">scipy</span> y <span class="code-snippet">scikit-learn</span>. Obsérvese la velocidad de descarga de los wheels cacheados; la eficiencia en la gestión de paquetes es un arte subestimado. El camino está despejado para la ciencia.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FASE 2: EL ESTADO DEL ARTE (O LA FALTA DE ÉL) -->
+        <section class="timeline-item">
+            <div class="timeline-marker" style="border-color: var(--accent-red)"></div>
+            <div class="section-title">Fase 2: Línea Base</div>
+            <h2 class="headline">La Ignorancia del Estudiante</h2>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="f120929b-da6a-403e-9399-6d5c7949a804.jpg" alt="Código de medición">
+                </div>
+                <div class="card-content">
+                    <h3>04. El Instrumento de Medición</h3>
+                    <p>
+                        Antes de intervenir, debemos cuantificar. Este script, <span class="code-snippet">medir_destilacion.py</span>, no entrena; observa. Utiliza la <strong>Divergencia Kullback-Leibler (KL)</strong> para medir matemáticamente la "distancia" entre las predicciones del Maestro y del Estudiante. Es nuestro termómetro de inteligencia.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="7347440c-8789-47c6-ab87-4e791581cfb8.jpg" alt="Teoría de KL Divergence">
+                </div>
+                <div class="card-content">
+                    <h3>05. La Teoría Detrás del Código</h3>
+                    <p>
+                        Una mirada profunda a la implementación. Nótese el cálculo de <span class="code-snippet">k1_div</span>. Estamos comparando las distribuciones de probabilidad (logits) suavizadas por una Temperatura T=1.0. Esto es crucial: no queremos que el estudiante solo imite la respuesta correcta, sino que entienda los matices de la duda del maestro.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="8d95d9d0-9550-4753-8470-ca74f8af8ce8.jpg" alt="Resultado fallido inicial">
+                </div>
+                <div class="card-content">
+                    <span class="status-badge status-error">Fallo Crítico</span>
+                    <h3>06. La Evidencia del Fracaso</h3>
+                    <p>
+                        Los datos son despiadados. Al ejecutar la medición, obtenemos una Divergencia KL de <strong>11.81</strong>. Este número es astronómico en términos de teoría de la información. El mensaje en rojo lo confirma: "ALTA DIVERGENCIA". El estudiante Qwen 0.5B es, funcionalmente, ruido aleatorio comparado con su maestro.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="b3ac45a3-0988-429f-9eac-f32a270c6d79.jpg" alt="Torneo de acertijos">
+                </div>
+                <div class="card-content">
+                    <h3>07. La Prueba Empírica (Los Acertijos)</h3>
+                    <p>
+                        Más allá de los números, la prueba cualitativa. Sometimos al estudiante a acertijos de lógica básica. El resultado es vergonzoso: falla en responder quién es la cuarta hija y no logra deducir la propiedad de las manzanas. Su razonamiento es circular y alucinatorio ("La cuarta hija es Pupu"). Queda demostrada la necesidad urgente de entrenamiento.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FASE 3: LA INTERVENCIÓN -->
+        <section class="timeline-item">
+            <div class="timeline-marker" style="border-color: var(--accent-purple)"></div>
+            <div class="section-title">Fase 3: La Destilación</div>
+            <h2 class="headline">La Transferencia de Conocimiento</h2>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="43f7ff8a-7d13-42c4-a540-dd7e710bbbea.jpg" alt="Código de entrenamiento">
+                </div>
+                <div class="card-content">
+                    <h3>08. El Mecanismo de Aprendizaje</h3>
+                    <p>
+                        Presentamos <span class="code-snippet">DistillationTrainer</span>. No es un entrenamiento estándar de fine-tuning. Aquí, la función de pérdida no es solo contra la verdad terreno, sino una combinación ponderada que incluye la pérdida de destilación. Obligamos al estudiante a alinear sus vectores internos con los del maestro.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="bd4d014c-2e47-4615-8a00-5903fdc396c4.jpg" alt="Debugging Trainer">
+                </div>
+                <div class="card-content">
+                    <span class="status-badge status-info">Depuración Técnica</span>
+                    <h3>09. Superando la API</h3>
+                    <p>
+                        Un desafío técnico interesante: <span class="code-snippet">TypeError: unexpected keyword argument 'tokenizer'</span>. La evolución de las bibliotecas de Hugging Face a veces rompe la compatibilidad hacia atrás. Este error nos obligó a refinar la instanciación del Trainer, recordándonos que el código de vanguardia es volátil.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FASE 4: EL RESULTADO -->
+        <section class="timeline-item">
+            <div class="timeline-marker" style="border-color: var(--accent-green)"></div>
+            <div class="section-title">Fase 4: El Triunfo</div>
+            <h2 class="headline">Sincronización Exitosa</h2>
+
+            <div class="card" style="border-color: var(--accent-green); box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);">
+                <div class="image-container">
+                    <img src="1a9e55a5-b592-4d33-b257-d68d9daa0d80.jpg" alt="Éxito final">
+                </div>
+                <div class="card-content">
+                    <span class="status-badge status-success">Misión Cumplida</span>
+                    <h3>10. Convergencia</h3>
+                    <p>
+                        El momento de la verdad. Tras el entrenamiento, volvemos a medir. El resultado es impactante: la Divergencia KL ha colapsado de 11.81 a <strong>1.09</strong>. Un orden de magnitud de mejora. El mensaje "El estudiante ha empezado a aprender del maestro" valida todo el proceso. Hemos comprimido la inteligencia del modelo de 1.5B parámetros en el contenedor de 0.5B.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Documentación generada automáticamente por Neural Scraper v3.0 | 2026</p>
+    </footer>
+
+</body>
+</html>
