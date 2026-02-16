@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación de Creación de LLM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Creación de LLM</h1>
+        <p class="subtitle">Documentación visual del proceso de entrenamiento y configuración paso a paso.</p>
+    </header>
+
+    <div class="container">
+        <div class="timeline">
+
+            <!-- Step 1 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 01</span>
+                    <h2 class="step-title">Preparación del Entorno</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="a413b600-7cef-4c21-90dc-c114e6d8bd43.jpg" alt="Paso 1">
+                    </div>
+                    <div class="description">
+                        <h3>Configuración Inicial</h3>
+                        <p>Comencé verificando la instalación de Python y configurando el entorno virtual con Conda para
+                            aislar las dependencias del proyecto. Es fundamental asegurar que estamos utilizando la
+                            versión correcta de CUDA para la aceleración por GPU antes de importar cualquier librería de
+                            Deep Learning.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 02</span>
+                    <h2 class="step-title">Instalación de Librerías</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="5e3a4265-4a55-4976-8309-bcc3c987ef94.jpg" alt="Paso 2">
+                    </div>
+                    <div class="description">
+                        <h3>Dependencias del Core</h3>
+                        <p>Procedí a instalar PyTorch y la librería `transformers` de Hugging Face. Esta etapa es
+                            crítica porque las incompatibilidades de versiones suelen generar errores en tiempo de
+                            ejecución. Aquí se muestra la confirmación de que todos los paquetes necesarios se han
+                            instalado correctamente sin conflictos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 03</span>
+                    <h2 class="step-title">Carga del Dataset</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="10fa451b-1e95-49ab-9629-519f300da4a6.jpg" alt="Paso 3">
+                    </div>
+                    <div class="description">
+                        <h3>Tokenización</h3>
+                        <p>Importé el conjunto de datos de texto y ejecuté el proceso de tokenización. He utilizado un
+                            tokenizador BPE (Byte-Pair Encoding) estándar. En esta captura se observa cómo el texto
+                            crudo se convierte en secuencias de IDs numéricos que la red neuronal puede procesar. La
+                            eficiencia en este paso determina la velocidad de carga durante el entrenamiento.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 04</span>
+                    <h2 class="step-title">Definición de la Arquitectura</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="912523a1-13c7-4c93-bbba-1dff056c6323.jpg" alt="Paso 4">
+                    </div>
+                    <div class="description">
+                        <h3>Configuración del Transformer</h3>
+                        <p>Aquí definí los hiperparámetros del modelo: número de capas de atención, tamaño de los
+                            embeddings y cabezales. Opté por una arquitectura tipo GPT reducida para optimizar los
+                            recursos locales. La consola muestra el resumen del modelo y el número total de parámetros
+                            entrenables, confirmando que la estructura está lista.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 05</span>
+                    <h2 class="step-title">Verificación de Hardware</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="7f671f46-0eb4-474b-9ed7-eb3c953c8b17.jpg" alt="Paso 5">
+                    </div>
+                    <div class="description">
+                        <h3>Estado de la GPU</h3>
+                        <p>Antes de iniciar el bucle de entrenamiento, realicé un chequeo de la memoria VRAM disponible
+                            con `nvidia-smi`. Es vital monitorizar esto para evitar errores de 'OOM' (Out Of Memory) una
+                            vez que se cargan los tensores en la GPU. Todo parece estar dentro de los márgenes seguros.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 06</span>
+                    <h2 class="step-title">Inicio del Entrenamiento</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="1e976688-1272-4292-b901-cbf8bf85c7e0.jpg" alt="Paso 6">
+                    </div>
+                    <div class="description">
+                        <h3>Primera Época</h3>
+                        <p>Lancé el script de entrenamiento. La imagen captura los primeros logs de la iteración
+                            inicial. Se puede ver cómo la función de pérdida (loss) comienza siendo alta, lo cual es
+                            normal ya que los pesos están inicializados aleatoriamente. El optimizador AdamW empieza a
+                            realizar los primeros ajustes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 07</span>
+                    <h2 class="step-title">Convergencia de la Pérdida</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="272e1543-5a76-4a1e-959f-4157f7e688f3.jpg" alt="Paso 7">
+                    </div>
+                    <div class="description">
+                        <h3>Monitorización Intermedia</h3>
+                        <p>A mitad del proceso, observé una caída constante en la pérdida de entrenamiento, lo que
+                            indica que el modelo está aprendiendo patrones del texto. Revisé también la pérdida de
+                            validación para asegurarme de que no se esté produciendo sobreajuste (overfitting) en esta
+                            etapa temprana.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 08</span>
+                    <h2 class="step-title">Guardado de Checkpoints</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="6a297eed-616a-455c-9ffe-45036b1dff36.jpg" alt="Paso 8">
+                    </div>
+                    <div class="description">
+                        <h3>Persistencia del Modelo</h3>
+                        <p>El sistema guarda automáticamente checkpoints periódicos. Esto es una medida de seguridad
+                            crucial; si el entrenamiento se interrumpiera por un fallo eléctrico o de software,
+                            podríamos reanudarlo desde el último punto guardado sin perder horas de cómputo. Aquí se
+                            confirma el guardado del epoch actual.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 09</span>
+                    <h2 class="step-title">Finalización</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="2947d432-734c-4bbe-b8df-a965d9738aee.jpg" alt="Paso 9">
+                    </div>
+                    <div class="description">
+                        <h3>Resultados Finales</h3>
+                        <p>El bucle de entrenamiento ha concluido exitosamente. La pérdida final se ha estabilizado en
+                            un valor aceptable. El modelo entrenado se ha serializado y guardado en disco como
+                            `model_final.pt`, listo para ser cargado en el script de inferencia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 10 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 10</span>
+                    <h2 class="step-title">Prueba de Inferencia</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="f9ec08e9-0f4b-4b19-bdcf-6726c562ee4b.jpg" alt="Paso 10">
+                    </div>
+                    <div class="description">
+                        <h3>Generación de Texto</h3>
+                        <p>Cargué el modelo recién entrenado y le proporcioné un "prompt" de prueba. En la imagen se
+                            observa cómo el modelo completa la frase de manera coherente, demostrando que ha aprendido
+                            la estructura sintáctica y semántica del dataset de entrenamiento. ¡Funciona!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 11 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">Paso 11</span>
+                    <h2 class="step-title">Documentación y Limpieza</h2>
+                </div>
+                <div class="step-content">
+                    <div class="image-container">
+                        <img src="bb8b0ad7-aa64-4866-92db-4bd66e0d2e6a.jpg" alt="Paso 11">
+                    </div>
+                    <div class="description">
+                        <h3>Cierre del Proyecto</h3>
+                        <p>Finalmente, generé los reportes de métricas y limpié los archivos temporales de cache. El
+                            entorno queda listo para futuros experimentos o para el despliegue del modelo en una
+                            aplicación real. Todo el flujo de trabajo ha sido documentado.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
